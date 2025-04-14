@@ -1,0 +1,24 @@
+{
+  "name": "node-express-mysql-sample",
+  "version": "1.0.0",
+  "description": "dummy_setup",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/souravkmayabious/node-express-mysql-sample.git"
+  },
+  "author": "sourav karmakar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/souravkmayabious/node-express-mysql-sample/issues"
+  },
+  "homepage": "https://github.com/souravkmayabious/node-express-mysql-sample#readme",
+  "dependencies": {
+    "cros": "^1.1.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0"
+  }
+}
