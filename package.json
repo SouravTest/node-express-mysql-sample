@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/souravkmayabious/node-express-mysql-sample#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "cros": "^1.1.0",
     "dotenv": "^16.6.0",
     "express": "^5.1.0",
