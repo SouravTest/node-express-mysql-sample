@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server":"nodemon server.js"
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/souravkmayabious/node-express-mysql-sample#readme",
   "dependencies": {
     "cros": "^1.1.0",
+    "dotenv": "^16.6.0",
     "express": "^5.1.0",
     "mysql2": "^3.14.0"
   },
