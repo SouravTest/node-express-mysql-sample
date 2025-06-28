@@ -1,20 +1,26 @@
 const express = require("express");
-const pool = require("./database/dbConnect");
+// const pool = require("./database/dbConnect");
 const cors = require("cors");
+require("dotenv").config();
 
-require("dotenv").config(); //for access env
+//routes Import
+const authRoutes = require("./routes/authRoute");
 
 const app = express();
-// const userRoutes = require('./routes/users');
 
-//allow all hosts
-app.use(cors());
-//for accept json input
-app.use(express.json());
-//for accept x-form input
-app.use(express.urlencoded({ extended: true }));
+app.use(cors()); //allow all hosts
+app.use(express.json()); //for accept json input
+app.use(express.urlencoded({ extended: true })); //for accept x-form input
 
-// app.use('/api/users', userRoutes);
+// Routes--
+app.get("/", (req, res) => {
+  res.send("Server Working ... 😊 ");
+});
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.use("/api/auth", authRoutes);
+
+app.listen(process.env.PORT, () =>
+  console.log(
+    `Server running on port ${process.env.PORT}  \n http://localhost:${process.env.PORT}`
+  )
+);
