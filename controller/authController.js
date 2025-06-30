@@ -70,7 +70,14 @@ const login = async (req, res) => {
 
     const token = jwt.sign({id:user.id,role:user.role,user_name:user.user_name},process.env.JWT_SECRET,{expiresIn:"1d"});
 
-    res.status(200).json({  
+    res.status(200)
+    .cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+        sameSite: "strict",
+      })
+    .json({  
       message :"Login success" , success:true , token , user : {id : user.id , name: user.name,user_name: user.user_name,role: user.role}
     })
   } catch (error) {
