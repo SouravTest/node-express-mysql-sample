@@ -1,10 +1,7 @@
 const express = require("express");
-// const pool = require("./database/dbConnect");
+const pool = require("./database/dbConnect");
 const cors = require("cors");
 require("dotenv").config();
-
-//routes Import
-const authRoutes = require("./routes/authRoute");
 
 const app = express();
 
@@ -17,7 +14,9 @@ app.get("/", (req, res) => {
   res.send("Server Working ... 😊 ");
 });
 
-// app.use("/api/auth", authRoutes);
+// Routes
+const authRoutes = require("./routes/authRoute"); 
+app.use("/api/auth", authRoutes);
 
 app.listen(process.env.PORT, () =>
   console.log(
