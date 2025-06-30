@@ -5,6 +5,8 @@ require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const authenticate = require("./middleware/authMiddleware");
 
+const { uploadSingle,uploadMultiple  } = require("./middleware/uploadMiddleware");
+
 //routes import
 const authRoutes = require("./routes/authRoute"); 
 
@@ -27,6 +29,30 @@ app.use("/api/auth", authRoutes);
 app.get("/api/protected", authenticate, (req, res) => {
   res.json({ message: "Access granted", user: req.user });
 });
+
+app.post("/upload-single", uploadSingle, (req, res) => {
+  if (!req.file) return res.status(400).json({ message: "No file uploaded" });
+
+  res.json({
+    message: "Single image uploaded",
+    file: req.file.filename,
+  });
+});
+
+
+app.post("/upload-multiple", uploadMultiple, (req, res) => {
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({ message: "No files uploaded" });
+  }
+
+  const filenames = req.files.map(file => file.filename);
+  res.json({
+    message: "Multiple images uploaded",
+    files: filenames,
+  });
+});
+
+
 
 app.listen(process.env.PORT, () =>
   console.log(
